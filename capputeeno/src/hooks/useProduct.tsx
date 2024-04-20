@@ -13,6 +13,7 @@ const fetcher = ():AxiosPromise<ProductsFetchResponse> => {
           id
           name
           price_in_cents
+          image_url
         }
       }
     `
