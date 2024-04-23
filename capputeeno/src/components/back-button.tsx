@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { BackIcon } from "./icons/back-icon"
+import { useRouter } from "next/navigation"
 
 const Button = styled.button`
   display: flex;
@@ -18,11 +19,21 @@ const Button = styled.button`
   background-color: transparent;
 ` 
 
-export function BackButton() {
+interface BtnProps {
+  navigate: string;
+}
+
+export function BackBtn({ navigate }: BtnProps){
+  const router = useRouter();
+
+  const handleNavigate = () => {
+      router.push(navigate)
+  }
+
   return (
-    <Button>
-      <BackIcon />
-      voltar
-    </Button>
+      <Button onClick={handleNavigate}>
+          <BackIcon/>
+          Voltar
+      </Button>
   )
 }
