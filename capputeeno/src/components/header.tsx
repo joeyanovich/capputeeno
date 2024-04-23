@@ -28,9 +28,14 @@ const HeaderContainer = styled.header`
     gap: 1.5rem;
   }
 
-  @media (min-width: ${props => props.theme.desktopBreakpoint}) {
+  @media (min-width: ${props => props.theme.tabletBreakpoint}) {
     flex-direction: row;
 
+    /* padding: 1.25rem 10rem; */
+  }
+
+  @media (min-width: ${props => props.theme.desktopBreakpoint}) {
+    /* flex-direction: row; */
     padding: 1.25rem 10rem;
   }
 `

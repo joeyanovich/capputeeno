@@ -15,13 +15,15 @@ const FilterList = styled.ul`
   gap: 2.5rem;
 
   list-style: none;
+
+  
 `
 
 const FilterItem = styled.li<FilterItemProps>`
   font-family: inherit;
   font-weight: ${props => props.selected ? '600' : '400'};
-  font-size: 1rem;
-  line-height: 1.375rem;
+  font-size: 0.75rem;
+  line-height: 18px;
   text-align: center;
   text-transform: uppercase;
   
@@ -30,6 +32,11 @@ const FilterItem = styled.li<FilterItemProps>`
   border-bottom: ${props => props.selected ? '4px solid var(--orange-low)' : ''};
 
   color: var(--text-dark);
+
+  @media (min-width: ${props => props.theme.desktopBreakpoint}) {
+    font-size: 1rem;
+    line-height: 1.375rem;
+  }
 `
 
 export function FilterByType() {

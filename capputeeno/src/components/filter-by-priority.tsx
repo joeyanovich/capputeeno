@@ -34,6 +34,8 @@ const FilterContainer = styled.div`
 const PriorityFilter = styled.ul`
   position: absolute;
   top: 100%;
+  right: 50%;
+  transform: translateX(50%);
 
   width: 15.625rem;
   padding: 0.75rem 1rem;
@@ -56,6 +58,15 @@ const PriorityFilter = styled.ul`
 
   li + li {
     margin-top: 0.25rem;
+  }
+
+  @media (min-width: ${props => props.theme.tabletBreakpoint}) {
+    right: 8px;
+    transform: translateX(0%);
+  }
+
+  @media (min-width: ${props => props.theme.desktopBreakpoint}) {
+    left: 0%;
   }
 `
 
