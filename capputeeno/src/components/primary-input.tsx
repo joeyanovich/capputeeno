@@ -16,7 +16,7 @@ export const PrimaryInput = styled.input`
   color: var(--text-dark);
   background-color: var(--bg-secondary);
 
-  @media (min-width: 48rem) {
+  @media (min-width: ${props => props.theme.desktopBreakpoint}) {
     font-size: 0.875rem;
     line-height: 22px;
   }
@@ -36,7 +36,7 @@ const InputContainer = styled.div`
     cursor: pointer;
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: ${props => props.theme.desktopBreakpoint}) {
     width: 22rem;
   }
 `

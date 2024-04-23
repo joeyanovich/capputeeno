@@ -19,7 +19,7 @@ const HeaderContainer = styled.header`
   flex-direction: column;
   gap: 1rem;
 
-  padding: 1.5rem 1.5rem;
+  padding: 1.5rem;
 
   > div {
     display: flex;
@@ -28,7 +28,7 @@ const HeaderContainer = styled.header`
     gap: 1.5rem;
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: ${props => props.theme.desktopBreakpoint}) {
     flex-direction: row;
 
     padding: 1.25rem 10rem;
@@ -43,7 +43,7 @@ const Logo = styled.a`
 
   color: var(--logo);
 
-  @media (min-width: 48rem) {
+  @media (min-width: ${props => props.theme.desktopBreakpoint}) {
     font-size: 2.5rem;
   }
 `
