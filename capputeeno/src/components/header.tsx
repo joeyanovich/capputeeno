@@ -16,8 +16,10 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
 
-  padding: 1.25rem 10rem;
+  padding: 1.5rem 1.5rem;
 
   > div {
     display: flex;
@@ -25,15 +27,25 @@ const HeaderContainer = styled.header`
     justify-content: center;
     gap: 1.5rem;
   }
+
+  @media (min-width: 48rem) {
+    flex-direction: row;
+
+    padding: 1.25rem 10rem;
+  }
 `
 
 const Logo = styled.a`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5;
   
 
   color: var(--logo);
+
+  @media (min-width: 48rem) {
+    font-size: 2.5rem;
+  }
 `
 
 
