@@ -1,6 +1,7 @@
 "use client"
 
 import { BackBtn } from "@/components/back-button";
+import { CartItem } from "@/components/cart/cart-item";
 import { DefaultPageLayout } from "@/components/default-page-layout";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ProductInCart } from "@/types/product";
@@ -9,7 +10,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
 `
@@ -27,11 +28,14 @@ const CartListContainer = styled.div`
   }
 
   p {
+    display: flex;
+    gap: 0.5rem;
+
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.5;
 
-    color: var(--text-dark-2);
+    color: var(--text-dark-2);;
 
     span {
       font-weight: 600;
@@ -39,15 +43,18 @@ const CartListContainer = styled.div`
   }
 `
 
-const CartList = styled.div`
+const CartList = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 1rem;
+
+  margin-top: 1.5rem;
 `
 
 export default function CartPage() {
-  const { value } = useLocalStorage<ProductInCart[]>("cart-items", [])
+  const { value, updateLocalStorage } = useLocalStorage<ProductInCart[]>("cart-items", [])
 
   const calculateTotal = (value: ProductInCart[]) => {
     return value.reduce((sum, item) => sum += (item.price_in_cents * item.quantity), 0);
@@ -55,7 +62,20 @@ export default function CartPage() {
 
   const cartTotal = formatPrice(calculateTotal(value))
 
-  console.log(value)
+  const handleUpdateQuantity = (id: string, quantity: number) => {
+    const newValue = value.map(item => {
+      if (item.id !== id) return item
+      return { ...item, quantity: quantity }
+    })
+    updateLocalStorage(newValue)
+  }
+
+  const handleDeleteItem = (id: string) => {
+    const newValue = value.filter(item => {
+      if (item.id !== id) return item
+    })
+    updateLocalStorage(newValue)
+  }
 
   return (
     <DefaultPageLayout>
@@ -69,7 +89,13 @@ export default function CartPage() {
           </p>
 
           <CartList>
-            {value.map(item => item.name)}
+            {value.map(item =>
+              <CartItem
+                key={item.id}
+                handleUpdateQuantity={handleUpdateQuantity}
+                handleDelete={handleDeleteItem}
+                product={item}
+              />)}
           </CartList>
         </CartListContainer>
       </Container>
