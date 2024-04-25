@@ -19,6 +19,7 @@ export function ProductsList() {
     <ListContainer>
       {data?.map(product =>
         <ProductCard
+          id={product.id}
           key={product.id}
           image={product.image_url}
           title={product.name}
