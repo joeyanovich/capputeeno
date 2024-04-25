@@ -1,4 +1,4 @@
-import { formaPrice } from "@/utils/format-price"
+import { formatPrice } from "@/utils/format-price"
 import styled from "styled-components"
 
 interface ProductCardProps {
@@ -62,7 +62,7 @@ const Card = styled.div`
 
 export function ProductCard(props: ProductCardProps) {
 
-  const price = formaPrice(props.price)
+  const price = formatPrice(props.price)
 
   return (
     <Card>
