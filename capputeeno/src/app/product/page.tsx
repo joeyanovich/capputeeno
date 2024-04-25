@@ -130,12 +130,12 @@ export default function Product({ searchParams }: { searchParams: { id: string }
         cartItemsArray.push({ ...data, quantity: 1, id: searchParams.id })
       }
 
-      localStorage.setItem('cart-items', JSON.stringify(cartItemsArray)) 
-    } else {
-      const newCart = [{ ...data, id: searchParams.id, quantity: 1 }]
+      localStorage.setItem('cart-items', JSON.stringify(cartItemsArray))
 
-      localStorage.setItem('cart-items', JSON.stringify([newCart])) 
-    }
+    } else {
+      const newCart = [{ ...data, quantity: 1, id: searchParams.id }]
+      localStorage.setItem('cart-items', JSON.stringify(newCart));
+  }
   }
 
   console.log(data)
