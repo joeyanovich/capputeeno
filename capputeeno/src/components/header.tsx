@@ -30,12 +30,9 @@ const HeaderContainer = styled.header`
 
   @media (min-width: ${props => props.theme.tabletBreakpoint}) {
     flex-direction: row;
-
-    /* padding: 1.25rem 10rem; */
   }
 
   @media (min-width: ${props => props.theme.desktopBreakpoint}) {
-    /* flex-direction: row; */
     padding: 1.25rem 10rem;
   }
 `
@@ -44,6 +41,8 @@ const Logo = styled.a`
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5;
+
+  text-decoration: none;
   
 
   color: var(--logo);
@@ -60,7 +59,7 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <Logo className={sairaStencil.className}>
+      <Logo className={sairaStencil.className} href="/">
         Capputeeno
       </Logo>
       <div>
