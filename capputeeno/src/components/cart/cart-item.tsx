@@ -62,6 +62,11 @@ const Item = styled.li`
     p {
       font-size: 0.75rem;
       font-weight: 400;
+      text-overflow: ellipsis;
+
+      max-height: 50%;
+
+      overflow: hidden;
     }
 
     div {
